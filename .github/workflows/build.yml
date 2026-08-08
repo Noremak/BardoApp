@@ -11,13 +11,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Cache Buildozer global directory
-        uses: actions/cache@v4
-        with:
-          path: ~/.buildozer
-          key: ${{ runner.os }}-buildozer-${{ hashFiles('buildozer.spec') }}
+        uses: actions/checkout@v4.2.2
 
       - name: Build Android APK using Docker
         uses: addnab/docker-run-action@v3
@@ -28,7 +22,7 @@ jobs:
             buildozer android debug
 
       - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.1
         with:
           name: Bardo-Android-APK
           path: bin/*.apk
