@@ -1,0 +1,110 @@
+# This project was generated with 0.4.4 using template: https://github.com/beeware/briefcase-template @ v0.4.4
+[tool.briefcase]
+project_name = "Bardo"
+bundle = "org.isolatedmind"
+version = "0.0.1"
+url = "https://isolatedmind.org/Bardo"
+license = "MIT"
+license-files = ["LICENSE"]
+author = "Kameron B"
+author_email = "kameron@isolatedmind.org"
+
+[tool.briefcase.app.Bardo]
+formal_name = "Bardo"
+description = ".31 ver"
+long_description = """More details about the app should go here.
+"""
+sources = [
+    "src/Bardo",
+]
+test_sources = [
+    "tests",
+]
+
+requires = [
+    "toga-android~=0.4.0",
+    "pygame-ce", # Uses pygame-ce which offers better cross-platform wheel availability
+]
+test_requires = [
+    # Add your cross-platform test requirements here
+]
+
+[tool.briefcase.app.Bardo.macOS]
+universal_build = true
+requires = [
+    # Add your macOS-specific app requirements here
+]
+
+[tool.briefcase.app.Bardo.linux]
+requires = [
+    # Add your Linux-specific app requirements here
+]
+
+[tool.briefcase.app.Bardo.linux.system.debian]
+system_requires = [
+    # Add any system packages needed at build the app here
+]
+
+system_runtime_requires = [
+    # Add any system packages needed at runtime here
+]
+
+[tool.briefcase.app.Bardo.linux.system.rhel]
+system_requires = [
+    # Add any system packages needed at build the app here
+]
+
+system_runtime_requires = [
+    # Add any system packages needed at runtime here
+]
+
+[tool.briefcase.app.Bardo.linux.system.suse]
+system_requires = [
+    # Add any system packages needed at build the app here
+]
+
+system_runtime_requires = [
+    # Add any system packages needed at runtime here
+]
+
+[tool.briefcase.app.Bardo.linux.system.arch]
+system_requires = [
+    # Add any system packages needed at build the app here
+]
+
+system_runtime_requires = [
+    # Add any system packages needed at runtime here
+]
+
+[tool.briefcase.app.Bardo.linux.flatpak]
+flatpak_runtime = "org.freedesktop.Platform"
+flatpak_runtime_version = "25.08"
+flatpak_sdk = "org.freedesktop.Sdk"
+
+[tool.briefcase.app.Bardo.windows]
+requires = [
+    # Add your Windows-specific app requirements here
+]
+
+# Mobile deployments
+[tool.briefcase.app.Bardo.iOS]
+requires = [
+    # Add your iOS-specific app requirements here
+]
+
+[tool.briefcase.app.Bardo.android]
+# Android-specific requirements (toga-android is required by Briefcase's Android template)
+requires = [
+    "toga-android~=0.4.0",
+    "pygame-ce",
+]
+
+# Force landscape mode on mobile
+orientation = "landscape"
+
+# Web deployments
+[tool.briefcase.app.Bardo.web]
+requires = [
+    # Add your web-specific app requirements here
+]
+
