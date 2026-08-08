@@ -13,11 +13,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build Android APK with Buildozer
-        uses: kivy/buildozer-action@v1
+      - name: Cache Buildozer global directory
+        uses: actions/cache@v4
         with:
-          command: buildozer android debug
-          buildozer_version: master
+          path: ~/.buildozer
+          key: ${{ runner.os }}-buildozer-${{ hashFiles('buildozer.spec') }}
+
+      - name: Build Android APK using Docker
+        uses: addnab/docker-run-action@v3
+        with:
+          image: kivy/buildozer:latest
+          options: -v ${{ github.workspace }}:/home/user/hostroot
+          run: |
+            buildozer android debug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
