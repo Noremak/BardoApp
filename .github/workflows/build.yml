@@ -11,18 +11,27 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
 
-      - name: Build Android APK using Docker
-        uses: addnab/docker-run-action@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          image: kivy/buildozer:latest
-          options: -v ${{ github.workspace }}:/home/user/hostroot
-          run: |
-            buildozer android debug
+          python-version: '3.11'
 
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4.6.1
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+
+      - name: Install Buildozer
+        run: |
+          pip install --upgrade pip buildozer cython virtualenv
+
+      - name: Build APK
+        run: yes | buildozer android debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: Bardo-Android-APK
           path: bin/*.apk
