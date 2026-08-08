@@ -23,7 +23,7 @@ test_sources = [
 
 requires = [
     "toga-android~=0.4.0",
-    "pygame-ce", # Uses pygame-ce which offers better cross-platform wheel availability
+    "pygame-ce", python3,pygame==2.5.2
 ]
 test_requires = [
     # Add your cross-platform test requirements here
